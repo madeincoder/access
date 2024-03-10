@@ -1,0 +1,6 @@
+{{#if @site.logo}}
+    <img class="dark:hidden inline-block" src="{{@site.logo}}" alt="{{@site.title}}">
+    <img class="hidden dark:inline-block" src="{{asset 'img/logo-white.svg'}}" alt="{{@site.title}}">
+{{else}}
+    {{@site.title}}
+{{/if}}

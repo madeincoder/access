@@ -1,0 +1,38 @@
+{{#if feature_image}}
+    <div class="post-image">
+        <img class="lazy w-full"
+            srcset="{{img_url feature_image size="xs" }} 470w,
+            {{img_url feature_image size="sm" }} 640w,
+            {{img_url feature_image size="md" }} 768w,
+            {{img_url feature_image size="lg" }} 1024w,
+            {{img_url feature_image size="xl" }} 1280w,
+            {{img_url feature_image size="xxl" }} 1576w"
+            sizes="(max-width: 470px) 470px, 1545px"
+            src="{{img_url feature_image size="xxl"}}"
+            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}" />
+        {{#if feature_image_caption}}
+            <figcaption class="px-2 py-3 text-sm text-white text-center">{{feature_image_caption}}</figcaption>
+        {{/if}}
+    </div>
+{{/if}}
+
+<div class="max-w-4xl mx-auto">
+    <div class="px-4 py-10 sm:p-10">
+
+        {{> "post/post-meta"}}
+
+        <div class="post-content py-8">
+            {{#if access}}
+            <div class="toc-content">
+                {{content}}
+            </div>
+            {{else}}
+                {{#if html}}
+                    {{{html}}}
+                {{else}}
+                    {{excerpt}}
+                {{/if}}
+            {{/if}}
+        </div>
+    </div>  
+</div>

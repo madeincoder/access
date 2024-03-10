@@ -1,0 +1,22 @@
+{{!-- related posts --}}
+{{#get "posts" limit="3" filter="tags:[{{post.tags}}]+id:-{{post.id}}" include="tags,authors" as |related|}}
+{{#if posts}}
+<div class="rel-post-sec py-10 md:py-20">
+    <div class="container">
+        <div class="text-center max-w-2xl mx-auto mb-5">
+            <h2>
+                <span>{{t "Related Articles"}}</span>
+            </h2>
+            <p class="pb-6" >{{t "But the victory of the industrialism didn’t mean that the craftsmen were completely extinct. The two worlds continued to coexist independently."}}</p>
+        </div>
+        <div class="flex flex-wrap -mx-4 justify-center">
+            {{#foreach posts}}
+                <div class="lg:w-1/3 sm:w-1/2 w-full py-4 px-3 lg:px-4 flex">
+                    {{> "post-card"}}
+                </div>
+            {{/foreach}}
+        </div> 
+    </div>
+</div>
+{{/if}}
+{{/get}} 

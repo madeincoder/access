@@ -1,0 +1,31 @@
+<nav class="pagination" role="navigation">
+    {{#if prev}}
+        <a class="newer-posts" href="{{page_url prev}}">Prev</a>
+    {{/if}}
+
+    <span id="pagination-list" class="pagination-list"></span>
+    <div id="page-total" style="display:none;">{{pages}}</div>
+    <div id="page-current" style="display:none;">{{page}}</div>
+
+    {{#if next}}
+        <a class="older-posts" href="{{page_url next}}">Next</a>
+    {{/if}}
+</nav>
+
+<script>
+    var pageTotal = document.getElementById('page-total').innerHTML;
+    var pageCurrent = document.getElementById('page-current').innerHTML;
+    var nav = document.getElementById('pagination-list');
+
+    for (i = 1; i <= pageTotal; i++) {
+        if (i == pageCurrent) {
+                nav.innerHTML = nav.innerHTML + '<span class="current">' + i + '</span>';
+        } else {
+            {{#is "podcast"}}
+                nav.innerHTML = nav.innerHTML + '<a href=/podcast/page/' + i + '>' + i + '</a>';
+            {{else}}
+                nav.innerHTML = nav.innerHTML + '<a href=/blog/page/' + i + '>' + i + '</a>';
+            {{/is}}
+        }
+    }
+</script>

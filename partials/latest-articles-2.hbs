@@ -1,0 +1,27 @@
+{{#get "posts" limit="6" filter="tag:-podcast" include="tags,authors"}}
+{{#if posts}}
+<div class="bg-gray-200 dark:bg-gray-900 py-16">
+    <div class="container">
+        <div class="text-center max-w-2xl mx-auto mb-5">
+            <h2 class="font-secondary text-5xl font-normal">
+                <span>{{t "Latest"}}</span>
+                <span class="text-primary">
+                    {{t "Articles"}}
+                </span>
+            </h2>
+            <p>But the victory of the industrialism didn’t mean that the craftsmen were completely extinct. The two worlds continued to coexist independently.</p>
+        </div>
+        <div class="w-full max-w-5xl mx-auto py-4 px-3 lg:px-4 home-2-dir">
+            {{#foreach posts}}
+                {{> "post-card-latest-2"}}
+            {{/foreach}}
+        </div>
+        <div class="text-center mt-10">
+            <a href="/blog/" class="btn btn-primary">
+                {{t "More Articles"}}
+            </a>
+        </div>
+    </div>
+</div>
+{{/if}}
+{{/get}}

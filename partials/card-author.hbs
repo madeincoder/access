@@ -1,0 +1,26 @@
+<a href="{{url}}" class="bg-gray-50 h-96 w-full relative block group card-author transition-all duration-300">
+    {{#if profile_image}}
+        <img class="w-full h-full absolute top-0 left-0 object-cover" src="{{img_url profile_image size="m"}}" alt="{{name}}">
+        {{else}}
+        <span class="h-full w-full absolute left-0 top-0 flex items-center justify-center">
+            <div class="w-36 h-36 text-gray-400">
+                {{> "icons/avatar-large"}}
+            </div>
+        </span>
+    {{/if}}
+
+    <div class="card-author-overlay flex-col justify-end flex transition-all duration-500 absolute h-full w-full left-0 top-0 p-7 bg-gradient-to-t from-heading to-transparent">
+        <div class="transform translate-y-10 group-hover:translate-y-0 transition-all duration-500">
+            <div class="border-l-2 border-primary pl-3">
+                <h4 class="ac-count leading-none font-secondary font-medium text-white">{{plural count.posts empty="0" singular="% Post" plural="% Posts"}}</h4>
+                <span class="ac-name block leading-none mb-0 font-semibold text-3xl font-secondary text-white author author-{{id}} {{slug}}">
+                    {{name}}
+                </span>
+            </div>
+            <div class="flex items-center text-white mt-5 opacity-0 transition-all group-hover:opacity-100 duration-500">
+                {{t "see profile"}}
+                <span class="icon-small ml-3">{{> "icons/right-arrow"}}</span>
+            </div>
+        </div>
+    </div>
+</a> 

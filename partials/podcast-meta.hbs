@@ -1,0 +1,27 @@
+<div class="">
+    <div class="flex items-center">
+        <time class="text-sm sm:text-base text-primary mr-4" datetime="{{date format="YYYY-MM-DD"}}">
+            {{date format="DD MMMM, YYYY"}}
+        </time>
+        {{#if tags}}
+            <div class="flex flex-wrap items-center justify-center mr-6">
+                {{#foreach tags}}
+                    <a href="{{url}}" title="{{name}}" class="text-heading dark:text-white text-sm  mr-3  rounded bg-primary-40  px-2 py-1 bg-gray-300 dark:bg-darklight hover:bg-primary hover:text-white transition-all">{{name}}</a>
+                {{/foreach}}
+            </div>
+        {{/if}}
+        {{#primary_author}}
+            <a href="{{url}}" class="my-1 primary-author text-heading dark:text-white flex items-center justify-center ">
+                {{#if profile_image}}
+                    <img class="mr-1 rounded-full object-cover h-10 w-10" src="{{img_url profile_image size="xs"}}" alt="{{name}}">
+                {{else}}
+                    <span class="inline-block mr-1">
+                        {{> "icons/avatar"}}
+                    </span>
+                {{/if}}                                
+                &nbsp;<span class="text-sm sm:text-base ">Hosted by {{name}}</span>
+            </a>
+        {{/primary_author}}
+    </div>
+    <h2 class="py-3">{{title}}</h2>
+</div>

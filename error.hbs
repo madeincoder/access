@@ -1,0 +1,28 @@
+{{!< default}}
+
+<div class="pt-16">
+    <div class="container">
+        <div class="flex flex-wrap justify-between items-center  flex-col-reverse md:flex-row max-w-4xl m-auto md:text-left text-center">
+            <div class="w-full md:w-1/2 md:mb-0 mb-16">
+                <h2 class="font-bold text-error text-5xl">{{t "Ooops ! Error 404"}}</h2>
+                <p class="text-error text-lg mb-8">{{t "Sorry Page Not Found , Site Under Construction"}}</p>
+                <div class="inline-block">
+                    <a href="{{@site.url}}" class="flex items-center btn btn-primary"> 
+                        <span class="mr-2 icon-small">{{> "icons/left-arrow"}}</span>
+                        {{t "Back To Home"}}</a>
+                 </div>
+            </div>
+            <div class="w-full md:w-2/5">
+                <img class="w-full max-w-xs inline-block md:my-0 my-10" src="{{asset 'img/Group-1.png'}}" alt="">
+            </div>
+        </div>
+    </div>
+</div>  
+
+
+
+
+
+
+
+

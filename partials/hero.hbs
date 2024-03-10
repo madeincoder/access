@@ -1,0 +1,37 @@
+{{#get "pages" filter="tag:hash-hero" limit="1" include="tags"  as |post|}}
+{{#if post}}
+{{#post}}
+<div class="mb-20 pt-24 md:pt-28 xl:pt-40">
+    <div class="container xl:max-w-[1344px]">
+        <div class="flex flex-col xl:flex-row items-center gap-10 mb-24">
+            <div class="hero-content flex-1">
+                {{content}}
+                <div class="mt-7 mb-7">
+                    <div class="flex flex-wrap">
+                    {{#foreach tags visibility="internal"}}
+                        <a href="{{description}}" target="_blank" class="flex font-medium text-heading dark:text-white mt-2.5">
+                            {{#if feature_image}}
+                            <span class="mr-2.5 bg-[#F3F3F3] p-1.5 min-w-[120px] flex justify-center items-center">
+                                <img src="{{img_url feature_image size="xs"}}" alt="{{name}}" >
+                            </span>
+                            {{/if}}
+                        </a>
+                    {{/foreach}}
+                    </div>
+                </div>
+            </div>
+            {{#if feature_image}}
+            <div class="max-w-[550px] max-h-[576px]">
+                <img class="rounded-[50px] max-h-[576px]"
+                srcset="{{img_url feature_image size="xs"}} 300w,
+                {{img_url feature_image size="sm"}} 600w"
+                sizes="(max-width: 600px) 600px" src="{{img_url feature_image size="sm"}}" alt="hero image">
+            </div>
+            {{/if}}
+        </div>
+        {{> newsletter}}
+    </div>
+</div>
+{{/post}}
+{{/if}}
+{{/get}}

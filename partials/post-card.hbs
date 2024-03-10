@@ -1,0 +1,30 @@
+<article class="{{post_class}} article-item flex flex-col group w-full h-full p-3 rounded-lg bg-white hover:box-shadow border border-gray-100 hover:border-white">
+    <div class="px-4 xl:px-5 pb-2 pt-4 xl:pt-5 flex flex-col flex-grow">
+        <div class="{{#if feature_image}}flex-grow{{/if}}">
+            <div class="mb-3 flex flex-wrap items-center">
+                <time class="text-sm mr-3" datetime="{{date format="YYYY-MM-DD"}}">
+                    {{date format="DD MMM, YYYY"}}
+                </time>
+                {{^if feature_image}}
+                {{#has tag="podcast"}}
+                <div class="w-5 text-primary">
+                    {{> "icons/podcast"}}
+                </div>
+                {{/has}}
+                {{/if}}
+            </div>
+            <h3>
+                <a href="{{url}}" class="text-heading group-hover:underline">{{title}}</a>
+            </h3>
+            <p class="excerpt">
+                {{#if custom_excerpt}}
+                    {{custom_excerpt}}
+                {{else}}
+                    {{excerpt words="20"}}
+                {{/if}}
+            </p>
+        </div>
+    </div>
+</article>
+
+

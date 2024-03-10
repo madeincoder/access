@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="{{@site.locale}}" 
+{{#match @custom.select_color_scheme "Dark"}} 
+   class="dark"
+{{/match}}
+
+{{#match @custom.select_color_scheme "Light"}} 
+   class="light"
+{{/match}}
+>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{meta_title page=(t " | Page %")}}</title>
+
+    {{!-- Fonts --}}
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@400;500;600&family=Teko:wght@400;600&display=swap" rel="stylesheet">
+    
+    {{!-- Stylesheets --}}
+    <link rel="stylesheet" href="{{asset '/css/style.css'}}">
+    <link rel="stylesheet" href="{{asset '/css/owl.carousel.min.css'}}">
+    
+    <script>
+        var site_url                            = '{{ @site.url }}',
+            pagination_next_page_number         = '{{ pagination.next }}',
+            pagination_available_pages_number   = '{{ pagination.pages }}',
+            pagination_loading_text             = '{{t "Loading..." }}',
+            pagination_more_posts_text          = '{{t "More articles" }}'
+
+    </script>
+
+    {{#match @custom.select_color_scheme "Auto"}} 
+    <script>
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            document.querySelector("html").setAttribute('class', 'dark')
+        }else{
+            document.querySelector("html").setAttribute('class', 'light')
+        }
+    </script>
+    {{/match}}
+
+    {{{block "fonts_css"}}}
+    {{{block "styles"}}}
+    
+    {{ghost_head}}
+</head>
+<body class="{{{block "bodyclass"}}} {{body_class}}">
+
+    {{> "header"}}
+    
+    {{{body}}}
+
+    {{> "footer"}}
+
+    <script src="{{asset 'js/scripts.js'}}"></script>
+    
+    {{ghost_foot}}
+</body>
+</html>

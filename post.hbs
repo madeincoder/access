@@ -1,0 +1,18 @@
+{{!< default}}
+{{#post}}
+<div class="overflow-hidden">
+    {{#match @custom.select_post_layout "Default"}}
+    {{> post-default}}
+    {{/match}}
+    {{#match @custom.select_post_layout "Left Sidebar"}}
+    {{> post-left-sidebar}}
+    {{/match}}
+    {{#match @custom.select_post_layout "Right Sidebar"}}
+    {{> post-right-sidebar}}
+    {{/match}}
+</div>
+{{/post}}
+
+{{> "post/related-post"}}
+
+{{> "subscribe"}}

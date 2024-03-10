@@ -1,0 +1,31 @@
+{{!< default}}
+{{#post}}
+<div class="overflow-hidden">
+    {{#if feature_image}}
+        <div class="post-image">
+            <img srcset="{{img_url feature_image size="s"}} 300w,
+                {{img_url feature_image size="m"}} 600w,
+                {{img_url feature_image size="l"}} 1000w,
+                {{img_url feature_image size="xl"}} 1600w"
+                sizes="(max-width: 600px) 600px, (max-width: 1180px) 1180px, 1920px"
+                src="{{img_url feature_image size="xl"}}"
+                alt="{{title}}" class="w-full">
+        </div>
+    {{/if}}
+    <div class="container">
+        <div class="max-w-5xl mx-auto">
+            <div class="px-6 pt-5 pb-2 md:pt-12 md:px-24 {{#if feature_image}}md:-mt-12 -mt-5{{else}} mt-11{{/if}} relative">
+                <h1 class="mb-0 text-5xl font-medium font-primary text-heading">{{title}}</h1>
+            </div>
+            <div class="page-content post-content pb-10 md:pb-20 md:px-24">
+                {{#if custom_excerpt}}
+                <p class="text-lg">{{custom_excerpt}}</p>
+                {{/if}}
+                {{content}}
+            </div>
+        </div>
+    </div>
+</div>                
+{{/post}}
+
+

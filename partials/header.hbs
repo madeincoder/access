@@ -1,0 +1,36 @@
+<div class="header-sec bg-white py-4  ">
+    <div class="container">
+        <div class="site-header flex justify-between lg:grid items-center ">
+            <div class="uppercase site-logo md:text-4xl text-3xl font-secondary">
+                <a href="{{@site.url}}" class="text-heading">
+                    {{> logo}}
+                </a>
+            </div>
+            <div class="h-menu-wrap hidden lg:block font-secondary text-lg text-heading">
+                {{navigation}}
+            </div>
+            <div class="header-right flex items-center justify-end">
+                <div class="hr-item ml-5 text-heading">
+                    <button class="btn btn-primary">Get in touch</button>
+                </div>
+                <div class="hr-item ml-2 sm:ml-5 lg:hidden">
+                    <div class="menutrigger cursor-pointer">
+                        <span class="h-0.5 w-7 block bg-heading  rounded-full"></span>
+                        <span class="h-0.5 w-7 block bg-heading  rounded-full my-1.5"></span>
+                        <span class="h-0.5 w-7 block bg-heading  rounded-full"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="mobile-menu lg:hidden">
+        <div class="menu-overlay z-20"></div>
+        <div class="mobile-menu-inner z-30 relative bg-white">
+            <div class="m-menu-body">
+                <div class="m-menu text-heading  text-lg"></div>
+            </div>
+        </div>
+    </div>
+</div>
+

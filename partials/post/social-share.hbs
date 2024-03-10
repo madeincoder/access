@@ -1,0 +1,99 @@
+{{#has visibility="public"}}
+<div class="mt-5 flex flex-wrap items-center">
+    <ul class="flex flex-wrap items-center text-gray-400 mr-4">
+        <li class="mr-2 my-2">
+        <a class="share-icon" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" href="https://www.facebook.com/sharer/sharer.php?u={{url absolute="true"}}">{{> "icons/facebook"}}</a>
+        </li>
+        <li class="mr-2 my-2">
+        <a class="share-icon" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" href="https://www.twitter.com/sharer/sharer.php?u={{url absolute="true"}}">{{> "icons/twitter"}}</a>
+        </li>
+        <li class="mr-2 my-2">
+        <a class="share-icon" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" href="https://www.instagram.com/sharer/sharer.php?u={{url absolute="true"}}">{{> "icons/instagram"}}</a>
+        </li>
+        <li class="mr-2 my-2">
+        <a class="share-icon" onclick="window.open(this.href, 'pop-up', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;" href="https://www.linkedin.com/sharer/sharer.php?u={{url absolute="true"}}">{{> "icons/linkedin"}}</a>
+        </li>
+        <li class="mr-2 my-2">
+            <a class="copy-link share-icon" data-link="{{@site.url}}{{url}}" href="#">
+                {{> icons/copy}}
+                <span class="copied bookmark-text">{{t "Copied to clipboard"}}</span>
+            </a>
+        </li>
+    </ul>
+    <a href="#" class="bookmark__article flex items-center text-heading dark:text-white my-3" target="_blank" rel="noopener" data-url="{{url}}">
+        <span class="bm-icon w-5 mr-1 -mt-1 inline-block text-primary">
+            <span class="bookmark-text">{{t "Bookmarked"}}</span>
+            <span class="iconbookmark">{{> "icons/bookmark"}}</span>
+            <span class="iconbookmarked">{{> "icons/bookmarked"}}</span>
+        </span>
+        <span clasS="f-article-share__button__label text-2xl font-secondary">
+            {{t "Bookmark"}}
+        </span>
+    </a>
+</div>
+{{/has}}
+
+{{#contentFor "scripts"}}
+<script>
+$(document).ready(function(){
+    var bookmarkPosts = []
+    var title = "{{title}}"
+    var url = "{{url}}"
+    $('.bookmark__article').on('click', function(e){
+        e.preventDefault()
+
+        if($(this).hasClass('active')){
+            bookmarkPosts = bookmarkPosts.filter(post => post.url !== url)
+            localStorage.setItem('bookmark-posts', JSON.stringify(bookmarkPosts));
+            $(this).removeClass('active')
+        }else{
+            var bookmarkPost = {
+                title,
+                url
+            }
+
+            if (localStorage.getItem('bookmark-posts')) {
+                bookmarkPosts = JSON.parse(localStorage.getItem('bookmark-posts'))
+                var postUrl = Boolean(bookmarkPosts.find(post => post.url === url))
+                if(postUrl){
+                    $(this).addClass('active')
+                }
+            }
+
+            bookmarkPosts = bookmarkPosts.filter(post => post.url !== bookmarkPost.url)
+            bookmarkPosts = [...bookmarkPosts, bookmarkPost]
+            var postUrl = Boolean(bookmarkPosts.find(post => post.url === url))
+            if(postUrl){
+                $(this).addClass('active')
+            }
+            localStorage.setItem('bookmark-posts', JSON.stringify(bookmarkPosts));
+        }
+    })
+
+    if (localStorage.getItem('bookmark-posts')) {
+        bookmarkPosts = JSON.parse(localStorage.getItem('bookmark-posts'))
+        var postUrl = Boolean(bookmarkPosts.find(post => post.url === url))
+        if(postUrl){
+            $('.bookmark__article').addClass('active')
+        }
+    }
+
+    $(".copy-link").on("click", function (e) {
+        e.preventDefault();
+        var url = $(this).data("link");
+
+        var $temp = $("<input>");
+        $("body").append($temp);
+        $temp.val(url).select();
+        document.execCommand("copy");
+        $temp.remove();
+        $(".copied").fadeIn();
+
+        setTimeout(function () {
+            $(".copied").fadeOut();
+        }, 1000);
+    });
+
+})
+</script>
+{{/contentFor}}

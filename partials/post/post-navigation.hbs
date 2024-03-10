@@ -1,0 +1,25 @@
+<div class="sm:flex justify-between text-center sm:text-left relative">
+    {{#prev_post}}
+    <a href="{{url}}" class="group w-full md:w-1/2 sm:p-10 px-5 py-7 sm:pr-10 block bg-gray-200 dark:bg-gray-800">
+        <h4 class=" font-medium mb-2">{{title}}</h4>
+        <div class="text-gray-600 dark:text-white">
+            <span class="w-4 inline-block mr-2">
+                {{> "icons/arrow-left"}}
+            </span>
+            {{t "Prev Post"}}
+        </div>
+    </a>
+    <div class="pn-line sm:h-16 w-24 m-auto sm:mr-0 block sm:w-auto"></div>
+    {{/prev_post}}
+    {{#next_post}}
+    <a href="{{url}}" class="group w-full text-right sm:!text-right md:w-1/2 sm:p-10 px-5 py-7 sm:pl-10 block bg-gray-200 dark:bg-gray-800">
+        <h4 class="font-medium mb-2">{{title}}</h4>
+        <div class="text-gray-600 dark:text-white">
+            {{t "Next Post"}}
+            <span class="w-4 inline-block ml-2">
+                {{> "icons/arrow-right"}}
+            </span>
+        </div>
+    </a>
+    {{/next_post}}
+</div>
